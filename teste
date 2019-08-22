@@ -1,0 +1,36 @@
+//Gabriel Amaral Martines
+//terraqueogabriel@gmail.com
+#include <stdio.h>
+#include <stdlib.h>
+
+int contador[10];
+
+void countD(int s){
+    int novoValor = s/10;
+    int ultimoDigito = s%10;
+    contador[ultimoDigito]++;
+    if(novoValor != 0)
+        countD(novoValor);
+}
+
+void f(int START, int END){
+    for(int i = START; i<= END; i++){
+        countD(i);
+    }
+}
+
+int main(){
+
+    for(int i = 0; i < 10; i++){
+        contador[i] = 0;
+    }
+    f(5,10);
+    printf("[");
+    for(int i = 0; i < 10; i++){
+        printf("%d, ", contador[i]);
+    }
+
+    printf("]");
+
+    return 0;
+}
